@@ -1,0 +1,276 @@
+@import url("https://fonts.googleapis.com/css?family=Exo");
+@import url("https://fonts.googleapis.com/css?family=Inter");
+
+.home {
+
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: center;
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+        color: white;
+
+        .main {
+            font-family: 'Inter';
+            font-size: 38px;
+            font-weight: bold;
+
+        }
+
+        .sub {
+            font-family: 'Inter';
+        }
+
+        .user {
+
+            margin-top: 20px;
+            display: flex;
+            column-gap: 10px;
+
+            font-family: 'Inter';
+
+            .exit {
+                border-radius: 10px;
+                width: 50px;
+                border: none;
+                color: #038920dd;
+                font-weight: bold;
+                background-color: white;
+                text-align: center;
+                display: grid;
+                grid-template-columns: auto;
+                align-items: center;
+                box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.8);
+            }
+
+            .userName {
+                font-style: italic;
+                font-size: 18px;
+                background-color: white;
+                width: fit-content;
+                color: #038920dd;
+                font-weight: bold;
+                padding: 10px;
+                border-radius: 10px;
+                box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.8);
+            }
+        }
+
+    }
+
+    .ManagerSelected {
+        height: 35vh;
+        width: 90vw;
+        box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.5);
+        border-radius: 20px;
+        margin-top: 20vh;
+        background-color: white;
+
+        h3 {
+            font-family: 'Inter';
+            margin-left: 20px;
+            color: #038920dd;
+        }
+
+        input {
+            width: 236px;
+            height: 40px;
+            display: block;
+            margin: 0px auto 0px auto;
+            box-shadow: 1px 1px 10px rgb(27, 27, 27, 0.5);
+            border-radius: 10px;
+            outline: none;
+            border: none;
+            padding: 0px 12px 0px 12px;
+        }
+
+        button {
+            display: block;
+            margin: 30px auto 0px auto;
+            width: 100px;
+            height: 40px;
+            border-radius: 10px;
+            outline: none;
+            border: none;
+            box-shadow: 1px 1px 10px rgb(27, 27, 27, 1);
+            color: white;
+            font-weight: bold;
+            background-color: #038920dd;
+        }
+
+        .listOfManager {
+            width: 260px;
+            height: 40px;
+            margin: 0px auto 0px auto;
+            box-shadow: 1px 1px 10px rgb(27, 27, 27, 0.5);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            span {
+                font-family: 'Inter';
+                margin: 0px 0px 0px 10px;
+            }
+
+            .transparencyM {
+                position: absolute;
+                font-size: 16px;
+                font-family: 'Exo';
+                margin-top: 40px;
+                top: 0;
+                background-color: white;
+                box-shadow: 1px 10px 10px rgb(27, 27, 27, 0.2);
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+
+                .mangerName {
+                    padding: 10px;
+                    cursor: pointer;
+                    border-radius: 10px;
+                }
+
+                .mangerName:hover {
+                    background-color: rgb(167, 167, 167);
+                }
+            }
+
+
+
+        }
+    }
+
+    .DataEntry {
+        height: 65vh;
+        width: 40vh;
+        background-color: white;
+        box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.8);
+        margin: 45px 0px 0px 0px;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        align-items: center;
+        .date{
+            margin-top: 30px;
+            padding: 10px;
+            font-size: 18px;
+            font-family: 'Inter';
+            border-radius: 10px;
+            font-weight: bold;
+            box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.8);
+        }
+        .Verifi{
+            font-family: 'Exo';
+            font-weight: bold;
+        }
+        .sectionVerified{
+            border-radius: 10px;
+            width: 220px;
+            box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.8);
+            .sec{
+                padding: 5px;
+                font-size: 18px;
+                font-family: 'Inter';
+                display: flex;
+                column-gap: 10px;
+                align-items: center;
+                i{
+                    font-size: 20px;
+                }
+                .square{
+                    height: 15px;
+                    width: 15px;
+                    border-radius: 4px;
+                    border: 1px solid black;
+                }
+            }
+        }
+        .wage{
+            font-size: 20px;
+            font-family: 'Inter';
+            font-weight: bold;
+        }
+        .workers {
+            
+            display: flex;
+            column-gap: 20px;
+            font-size: 24px;
+            text-align: center;
+            font-family: 'Inter';
+
+            %commonlistWorker {
+                position: absolute;
+                top: 0;
+                width: 100px;
+                height: fit-content;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.8);
+
+                margin-top: 45px;
+                background-color: white;
+                display: none;
+
+                .workerId {
+                    padding: 8px;
+                    cursor: pointer;
+                }
+
+                .workerId:hover {
+                    background-color: gray;
+                }
+            }
+
+            %classCommonDesing {
+                display: grid;
+                grid-template-columns: auto;
+                align-items: center;
+                border-radius: 10px;
+                height: 45px;
+                width: 100px;
+                box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.8);
+                position: relative;
+            }
+
+            .class1 {
+
+                @extend %classCommonDesing;
+
+                .listWorker {
+                    @extend %commonlistWorker;
+                }
+
+            }
+
+            .class2 {
+                @extend %classCommonDesing;
+
+                .listWorker {
+                    @extend %commonlistWorker;
+                }
+            }
+        }
+
+        label {
+            display: flex;
+            flex-direction: column;
+            row-gap: 8px;
+            span{
+                font-family: 'Exo';
+                font-weight: bold;
+            }
+            input {
+                height: 35px;
+                width: 200px;
+                box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.7);
+                border: none;
+                border-radius: 10px;
+                padding: 0px 12px 0px 12px;
+            }
+        }
+    }
+}
