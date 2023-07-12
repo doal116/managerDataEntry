@@ -55,7 +55,7 @@ const workerIds = (managerData, name) => {
   })
   return data;
 }
-const DataEntry = ({ userDetails, handleDataExport }) => {
+const DataEntry = ({ userDetails, handleDataExport, finalData, setFinalData }) => {
   const [wage, setWage] = useState('');
   const handleWage = (num) => {
     if (num) {
@@ -136,7 +136,7 @@ const DataEntry = ({ userDetails, handleDataExport }) => {
 
   }
 
-  const [finalData, setFinalData] = useState();
+
   const handleFinalData = () => {
     const sectionVerifi = sectionVerified.filter(elem => elem['status']);
     const data = {
@@ -282,10 +282,10 @@ const Data = ({
   dataExport, userDetails, csvTransfer,
   handleSubmition, handleIndexDeletion, indexDeletion,
   handleDelete }) => {
-  const [classes, setClasses] = useState(classesfinder(dataExport));
-  const [row, setRow] = useState([
+  const classes = classesfinder(dataExport);
+  const row = [
     'Date', 'Lab Id', 'Section Verified', 'Time Completed', 'Wage', 'Worker Id', 'index'
-  ])
+  ];
 
   return (
     <div className='Data'>
@@ -371,6 +371,7 @@ function App() {
     newArr.push(finalData);
     setDataExport(newArr);
   }
+  const [finalData, setFinalData] = useState('');
   const [indexDeletion, setIndex] = useState('')
   const handleIndexDeletion = (e) => {
     if (e !== '') setIndex(parseInt(e.target.value))
@@ -456,7 +457,7 @@ function App() {
               csvTransfer={csvTransfer} handleSubmition={handleSubmition}
               handleIndexDeletion={handleIndexDeletion} indexDeletion={indexDeletion}
               handleDelete={handleDelete}
-            /> : <DataEntry userDetails={userDetails} handleDataExport={handleDataExport} />
+            /> : <DataEntry userDetails={userDetails} handleDataExport={handleDataExport} finalData={finalData} setFinalData={setFinalData} />
           : <ManagerSelected manager={manager}
             handleManager={handleManager}
             handleUserDetails={handleUserDetails} />
