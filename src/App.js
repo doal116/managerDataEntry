@@ -333,12 +333,12 @@ const Data = ({
         </div>
       </div>
       <div className='bottomSelection'>
-        <a
+        <div
           className='sendData'
           onClick={() => handleSubmition(userDetails['name'], csvTransfer)}
 
         >Send Data ({dataExport.length})
-        </a>
+        </div>
         <input
           placeholder='Index number'
           type='number'
