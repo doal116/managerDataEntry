@@ -26,7 +26,7 @@
        column-gap: 10px;
   font-family: "Inter";
 }
-.home .header .user .exit {
+.home .header .user .checkList, .home .header .user .exit {
   border-radius: 10px;
   width: 50px;
   border: none;
@@ -41,7 +41,7 @@
 }
 .home .header .user .userName {
   font-style: italic;
-  font-size: 18px;
+  font-size: 16px;
   background-color: white;
   width: -moz-fit-content;
   width: fit-content;
@@ -49,10 +49,14 @@
   font-weight: bold;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 1px 1px 10px rgba(33, 33, 33, 0.8);
+}
+.home .header .user .checkList {
+  width: 75px !important;
 }
 .home .ManagerSelected {
-  height: 35vh;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0px 0px 20px 0px;
   width: 90vw;
   box-shadow: 1px 1px 10px rgba(33, 33, 33, 0.5);
   border-radius: 20px;
@@ -122,7 +126,8 @@
   background-color: rgb(167, 167, 167);
 }
 .home .DataEntry {
-  height: 65vh;
+  height: -moz-fit-content;
+  height: fit-content;
   width: 40vh;
   background-color: white;
   box-shadow: 1px 1px 10px rgba(33, 33, 33, 0.8);
@@ -132,6 +137,7 @@
   flex-direction: column;
   row-gap: 20px;
   align-items: center;
+  padding: 0px 0px 20px 0px;
 }
 .home .DataEntry .date {
   margin-top: 30px;
@@ -182,10 +188,10 @@
   text-align: center;
   font-family: "Inter";
 }
-.home .DataEntry .workers .class2 .listWorker, .home .DataEntry .workers .class1 .listWorker {
+.home .DataEntry .workers .class1 .listWorker {
   position: absolute;
   top: 0;
-  width: 100px;
+  width: 130px;
   height: -moz-fit-content;
   height: fit-content;
   border-bottom-left-radius: 10px;
@@ -195,20 +201,47 @@
   background-color: white;
   display: none;
 }
-.home .DataEntry .workers .class2 .listWorker .workerId, .home .DataEntry .workers .class1 .listWorker .workerId {
+.home .DataEntry .workers .class1 .listWorker .workerId {
   padding: 8px;
   cursor: pointer;
 }
-.home .DataEntry .workers .class2 .listWorker .workerId:hover, .home .DataEntry .workers .class1 .listWorker .workerId:hover {
+.home .DataEntry .workers .class1 .listWorker .workerId:hover {
   background-color: gray;
 }
-.home .DataEntry .workers .class2, .home .DataEntry .workers .class1 {
+.home .DataEntry .workers .selectClass {
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px rgba(33, 33, 33, 0.8);
+  font-size: 16px;
+  min-width: 80px;
+  font-size: 26px;
+  text-align: center;
+  display: grid;
+  grid-template-columns: auto;
+  align-items: center;
+}
+.home .DataEntry .workers .selectClass .class12 {
+  position: absolute;
+  background-color: white;
+  top: 0;
+  margin-top: 45px;
+  width: 80px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 1px 10px 10px rgba(33, 33, 33, 0.5);
+}
+.home .DataEntry .workers .selectClass .class12 .class {
+  padding: 10px;
+}
+.home .DataEntry .workers .class1 {
   display: grid;
   grid-template-columns: auto;
   align-items: center;
   border-radius: 10px;
-  height: 45px;
-  width: 100px;
+  height: 25px;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 10px 14px 10px 14px;
   box-shadow: 1px 1px 10px rgba(33, 33, 33, 0.8);
   position: relative;
 }
@@ -228,4 +261,94 @@
   border: none;
   border-radius: 10px;
   padding: 0px 12px 0px 12px;
+  outline: none;
+}
+.home .DataEntry .addBtn {
+  cursor: pointer;
+  width: 100px;
+  padding: 10px;
+  background-color: rgba(3, 137, 32, 0.8666666667);
+  color: white;
+  font-family: "Inter";
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px rgba(33, 33, 33, 0.8);
+}
+.home .Data {
+  display: flex;
+  flex-direction: column;
+  row-gap: 35px;
+  align-items: center;
+}
+.home .Data .class2, .home .Data .class1 {
+  width: 85vw;
+  background-color: white;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: -moz-fit-content;
+  height: fit-content;
+  box-shadow: 1px 1px 10px rgba(33, 33, 33, 0.5);
+  overflow-x: auto;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 12px;
+}
+.home .Data .class2 span, .home .Data .class1 span {
+  padding: 8px;
+  background-color: rgba(19, 160, 50, 0.8666666667);
+  color: white;
+  display: block;
+  width: 100%;
+  border-top-left-radius: 10px;
+}
+.home .Data .class2 .datadisplay, .home .Data .class1 .datadisplay {
+  display: flex;
+  flex-direction: row;
+}
+.home .Data .class2 .datadisplay .row, .home .Data .class1 .datadisplay .row {
+  display: flex;
+  flex-direction: column;
+}
+.home .Data .class2 .datadisplay .row .r, .home .Data .class1 .datadisplay .row .r {
+  font-family: "Inter";
+  border: 1px solid black;
+  width: 135px;
+  padding: 10px;
+}
+.home .Data .class2 .datadisplay .row .main, .home .Data .class1 .datadisplay .row .main {
+  font-weight: bold;
+  font-family: "Inter";
+  padding: 10px !important;
+}
+.home .Data .class1 {
+  margin: 50px 0px 0px 0px;
+}
+.home .Data .bottomSelection {
+  display: flex;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  align-items: center;
+}
+.home .Data .bottomSelection .sendData {
+  background-color: rgba(3, 137, 32, 0.8666666667);
+  padding: 10px;
+  color: white;
+  font-family: "Inter";
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px rgba(33, 33, 33, 0.5);
+  text-decoration: none;
+}
+.home .Data .bottomSelection input {
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid gray;
+  padding: 10px;
+  width: 100px;
+}
+.home .Data .bottomSelection .deletion {
+  background-color: red;
+  padding: 10px;
+  color: white;
+  font-family: "Inter";
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px rgba(33, 33, 33, 0.5);
 }/*# sourceMappingURL=home.css.map */

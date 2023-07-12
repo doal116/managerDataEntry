@@ -5,7 +5,6 @@ export const managerData = [
             {
                 class: 'A',
                 worker: [
-                    { id: 'A' },
                     { id: 'AA1' },
                     { id: 'AB2' },
                     { id: 'AC3' },
@@ -17,7 +16,6 @@ export const managerData = [
             {
                 class: 'B',
                 worker: [
-                    { id: 'B' },
                     { id: 'BA1' },
                     { id: 'BC1' },
                     { id: 'BC2' },
@@ -33,7 +31,6 @@ export const managerData = [
         workersId: [{
             class: 'C',
             worker: [
-                { id: 'C' },
                 { id: 'CB4' },
                 { id: 'CD5' },
                 { id: 'CE6' },
@@ -44,7 +41,6 @@ export const managerData = [
         }, {
             class: 'D',
             worker: [
-                { id: 'D' },
                 { id: 'DA1' },
                 { id: 'DB2' },
                 { id: 'DC3' },
@@ -60,7 +56,6 @@ export const managerData = [
         workersId: [{
             class: 'E',
             worker: [
-                { id: 'E' },
                 { id: 'EA6' },
                 { id: 'EB4' },
                 { id: 'EC5' },
@@ -71,7 +66,6 @@ export const managerData = [
         }, {
             class: 'F',
             worker: [
-                { id: 'F' },
                 { id: 'FA4' },
                 { id: 'FB3' },
                 { id: 'FC5' },
@@ -87,7 +81,6 @@ export const managerData = [
         workersId: [{
             class: 'I',
             worker: [
-                { id: 'I' },
                 { id: 'IA1' },
                 { id: 'IB2' },
                 { id: 'IC3' },
@@ -98,7 +91,6 @@ export const managerData = [
         }, {
             class: 'J',
             worker: [
-                { id: 'J' },
                 { id: 'JA5' },
                 { id: 'JB4' },
                 { id: 'JC1' },
@@ -114,7 +106,6 @@ export const managerData = [
         workersId: [{
             class: 'H',
             worker: [
-                { id: 'H' },
                 { id: 'HB6' },
                 { id: 'HD3' },
                 { id: 'HE4' },
@@ -125,7 +116,6 @@ export const managerData = [
         }, {
             class: 'G',
             worker: [
-                { id: 'G' },
                 { id: 'GA1' },
                 { id: 'GB2' },
                 { id: 'GC1' },
@@ -141,7 +131,6 @@ export const managerData = [
         workersId: [{
             class: 'K',
             worker: [
-                { id: 'K' },
                 { id: 'KB1' },
                 { id: 'KC1' },
                 { id: 'KD1' },
@@ -152,7 +141,6 @@ export const managerData = [
         }, {
             class: 'L',
             worker: [
-                { id: 'L' },
                 { id: 'LA1' },
                 { id: 'LB1' },
                 { id: 'LC1' },
@@ -168,7 +156,6 @@ export const managerData = [
         workersId: [{
             class: 'M',
             worker: [
-                { id: 'M' },
                 { id: 'MA1' },
                 { id: 'MB1' },
                 { id: 'MC1' },
@@ -179,7 +166,6 @@ export const managerData = [
         }, {
             class: 'N',
             worker: [
-                { id: 'N' },
                 { id: 'NA1' },
                 { id: 'NB1' },
                 { id: 'NC1' },
@@ -195,7 +181,6 @@ export const managerData = [
         workersId: [{
             class: 'O',
             worker: [
-                { id: 'O' },
                 { id: 'OA1' },
                 { id: 'OB1' },
                 { id: 'OC1' },
@@ -206,7 +191,6 @@ export const managerData = [
         }, {
             class: 'P',
             worker: [
-                { id: 'P' },
                 { id: 'PA1' },
                 { id: 'PB1' },
                 { id: 'PC1' },
@@ -222,7 +206,6 @@ export const managerData = [
         workersId: [{
             class: 'Q',
             worker: [
-                { id: 'Q' },
                 { id: 'QA1' },
                 { id: 'QB1' },
                 { id: 'QC1' },
@@ -233,7 +216,6 @@ export const managerData = [
         }, {
             class: 'R',
             worker: [
-                { id: 'R' },
                 { id: 'RA1' },
                 { id: 'RB1' },
                 { id: 'RC1' },
@@ -249,7 +231,6 @@ export const managerData = [
         workersId: [{
             class: 'S',
             worker: [
-                { id: 'T' },
                 { id: 'TA1' },
                 { id: 'TB1' },
                 { id: 'TC1' },
@@ -260,7 +241,6 @@ export const managerData = [
         }, {
             class: 'T',
             worker: [
-                { id: 'S' },
                 { id: 'SA1' },
                 { id: 'SB1' },
                 { id: 'SC1' },

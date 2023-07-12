@@ -32,7 +32,7 @@
 
             font-family: 'Inter';
 
-            .exit {
+            %commonDesignExit {
                 border-radius: 10px;
                 width: 50px;
                 border: none;
@@ -46,23 +46,33 @@
                 box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.8);
             }
 
+            .exit {
+                @extend %commonDesignExit;
+            }
+
             .userName {
                 font-style: italic;
-                font-size: 18px;
+                font-size: 16px;
                 background-color: white;
                 width: fit-content;
                 color: #038920dd;
                 font-weight: bold;
                 padding: 10px;
                 border-radius: 10px;
-                box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.8);
+
+            }
+
+            .checkList {
+                @extend %commonDesignExit;
+                width: 75px !important;
             }
         }
 
     }
 
     .ManagerSelected {
-        height: 35vh;
+        height: fit-content;
+        padding: 0px 0px 20px 0px;
         width: 90vw;
         box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.5);
         border-radius: 20px;
@@ -144,7 +154,7 @@
     }
 
     .DataEntry {
-        height: 65vh;
+        height: fit-content;
         width: 40vh;
         background-color: white;
         box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.8);
@@ -154,7 +164,9 @@
         flex-direction: column;
         row-gap: 20px;
         align-items: center;
-        .date{
+        padding: 0px 0px 20px 0px;
+
+        .date {
             margin-top: 30px;
             padding: 10px;
             font-size: 18px;
@@ -163,25 +175,30 @@
             font-weight: bold;
             box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.8);
         }
-        .Verifi{
+
+        .Verifi {
             font-family: 'Exo';
             font-weight: bold;
         }
-        .sectionVerified{
+
+        .sectionVerified {
             border-radius: 10px;
             width: 220px;
             box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.8);
-            .sec{
+
+            .sec {
                 padding: 5px;
                 font-size: 18px;
                 font-family: 'Inter';
                 display: flex;
                 column-gap: 10px;
                 align-items: center;
-                i{
+
+                i {
                     font-size: 20px;
                 }
-                .square{
+
+                .square {
                     height: 15px;
                     width: 15px;
                     border-radius: 4px;
@@ -189,13 +206,15 @@
                 }
             }
         }
-        .wage{
+
+        .wage {
             font-size: 20px;
             font-family: 'Inter';
             font-weight: bold;
         }
+
         .workers {
-            
+
             display: flex;
             column-gap: 20px;
             font-size: 24px;
@@ -205,7 +224,7 @@
             %commonlistWorker {
                 position: absolute;
                 top: 0;
-                width: 100px;
+                width: 130px;
                 height: fit-content;
                 border-bottom-left-radius: 10px;
                 border-bottom-right-radius: 10px;
@@ -225,13 +244,43 @@
                 }
             }
 
+            .selectClass {
+                position: relative;
+                border-radius: 10px;
+                box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.8);
+                font-size: 16px;
+                min-width: 80px;
+                font-size: 26px;
+                text-align: center;
+                display: grid;
+                grid-template-columns: auto;
+                align-items: center;
+
+                .class12 {
+                    position: absolute;
+                    background-color: white;
+
+                    top: 0;
+                    margin-top: 45px;
+                    width: 80px;
+                    border-bottom-left-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                    box-shadow: 1px 10px 10px rgb(33, 33, 33, 0.5);
+
+                    .class {
+                        padding: 10px;
+                    }
+                }
+            }
+
             %classCommonDesing {
                 display: grid;
                 grid-template-columns: auto;
                 align-items: center;
                 border-radius: 10px;
-                height: 45px;
-                width: 100px;
+                height: 25px;
+                width: fit-content;
+                padding: 10px 14px 10px 14px;
                 box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.8);
                 position: relative;
             }
@@ -246,23 +295,19 @@
 
             }
 
-            .class2 {
-                @extend %classCommonDesing;
 
-                .listWorker {
-                    @extend %commonlistWorker;
-                }
-            }
         }
 
         label {
             display: flex;
             flex-direction: column;
             row-gap: 8px;
-            span{
+
+            span {
                 font-family: 'Exo';
                 font-weight: bold;
             }
+
             input {
                 height: 35px;
                 width: 200px;
@@ -270,7 +315,120 @@
                 border: none;
                 border-radius: 10px;
                 padding: 0px 12px 0px 12px;
+                outline: none;
             }
         }
+
+        .addBtn {
+            cursor: pointer;
+            width: 100px;
+            padding: 10px;
+            background-color: #038920dd;
+            color: white;
+            font-family: 'Inter';
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.8);
+        }
+    }
+
+    .Data {
+        display: flex;
+        flex-direction: column;
+        row-gap: 35px;
+        align-items: center;
+
+
+
+        %commonDesignClass12 {
+            width: 85vw;
+            background-color: white;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            height: fit-content;
+            box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.5);
+            overflow-x: auto;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 12px;
+
+            span {
+                padding: 8px;
+                background-color: #13a032dd;
+                color: white;
+                display: block;
+                width: 100%;
+                border-top-left-radius: 10px;
+            }
+
+            .datadisplay {
+                display: flex;
+                flex-direction: row;
+
+                .row {
+                    display: flex;
+                    flex-direction: column;
+
+                    .r {
+                        font-family: 'Inter';
+                        border: 1px solid black;
+                        width: 135px;
+                        padding: 10px;
+                    }
+
+                    .main {
+                        font-weight: bold;
+                        font-family: 'Inter';
+                        padding: 10px !important;
+                    }
+                }
+            }
+
+        }
+
+        .class1 {
+            margin: 50px 0px 0px 0px;
+            @extend %commonDesignClass12;
+
+        }
+
+        .bottomSelection {
+            display: flex;
+            column-gap: 10px;
+            align-items: center;
+
+            .sendData {
+                background-color: #038920dd;
+                padding: 10px;
+                color: white;
+                font-family: 'Inter';
+                border-radius: 10px;
+                box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.5);
+                text-decoration: none;
+            }
+
+            input {
+                border-radius: 10px;
+                outline: none;
+                border: 1px solid gray;
+                padding: 10px;
+                width: 100px;
+            }
+
+            .deletion {
+                background-color: red;
+                padding: 10px;
+                color: white;
+                font-family: 'Inter';
+                border-radius: 10px;
+                box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.5);
+
+            }
+        }
+
+
+        .class2 {
+            @extend %commonDesignClass12;
+        }
+
     }
 }

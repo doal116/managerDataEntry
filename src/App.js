@@ -55,23 +55,33 @@ const workerIds = (managerData, name) => {
   })
   return data;
 }
-const DataEntry = ({ userDetails }) => {
+const DataEntry = ({ userDetails, handleDataExport }) => {
   const [wage, setWage] = useState('');
   const handleWage = (num) => {
-    labData.forEach((elem) => {
-      if (elem['number'] === num) {
-        setWage(elem['type']);
-      }
-    })
+    if (num) {
+      labData.forEach((elem) => {
+        if (elem['number'] === num) {
+          setWage(elem['type']);
+        }
+      })
+    }
   }
+
+  const [time, setTime] = useState('');
+  const handleTime = (e) => {
+    if (e !== '') setTime(e.target.value);
+    else setTime('')
+  }
+
   const [labId, setLabId] = useState('');
   const handleLabId = (e) => {
-    if (e.target.value !== '') {
+    if (e !== '') {
       handleWage(parseInt(e.target.value));
       setLabId(parseInt(e.target.value));
     }
-    else setLabId(e.target.value);
+    else setLabId('');
   }
+
   const [workers, setWokers] = useState(workerIds(managerData, userDetails['name']));
   useEffect(() => {
     managerData.forEach((elem) => {
@@ -81,6 +91,7 @@ const DataEntry = ({ userDetails }) => {
     });
 
   }, [workers, userDetails]);
+
   const [classClick, setClassClick] = useState({
     class1: false,
     class2: false
@@ -98,23 +109,8 @@ const DataEntry = ({ userDetails }) => {
       })
     }
   }
-  const [workerSelected, setWorkerSelected] = useState({
-    class1: '',
-    class2: ''
-  });
-  const handleWorkerSelected = (class12, workerId) => {
-    if (class12 === 0) {
-      setWorkerSelected({
-        class1: workerId,
-        class2: workers[1]['class']
-      })
-    } else {
-      setWorkerSelected({
-        class1: workers[0]['class'],
-        class2: workerId
-      })
-    }
-  }
+
+
 
   const [sectionVerified, setSectionVerified] = useState([
     { name: 'Biography', status: false },
@@ -122,49 +118,94 @@ const DataEntry = ({ userDetails }) => {
     { name: 'Medical', status: false },
     { name: 'Analyse Sanguine', status: false }
   ]);
-
   const handleSectionVerif = (sec) => {
     const newArr = [...sectionVerified];
-    newArr.forEach((elem) => {
-      if (elem['name'] === sec) {
-        elem['status'] = !elem['status'];
-      }
-    });
-    setSectionVerified(newArr);
+    if (sec !== '') {
+      newArr.forEach((elem) => {
+        if (elem['name'] === sec) {
+          elem['status'] = !elem['status'];
+        } else elem['status'] = false;
+      });
+      setSectionVerified(newArr);
+    } else {
+      newArr.forEach((elem) => {
+        elem['status'] = false;
+      });
+      setSectionVerified(newArr);
+    }
+
+  }
+
+  const [finalData, setFinalData] = useState();
+  const handleFinalData = () => {
+    const sectionVerifi = sectionVerified.filter(elem => elem['status']);
+    const data = {
+      date: userDetails['date'],
+      labId: labId,
+      workerId: workerSelected,
+      supervisorId: selectedclass,
+      timeCompleted: time,
+      sectionVerified: sectionVerifi[0]['name'],
+      wage: wage === 'High wage' ? 350 : 250
+    };
+    setFinalData(data);
+    handleDataExport(data);
+    handleLabId('');
+    handleWorkerSelected('');
+    handleTime('');
+    handleSectionVerif('');
+    handleSelClass('');
+  }
+
+  const [class12, setClass12] = useState(false);
+  const handleClass12 = () => setClass12(!class12);
+
+  const [selectedclass, setClass] = useState('');
+  const handleSelClass = (elem) => {
+    setClass(elem);
+    setWorkerSelected('')
+  }
+  const [workerSelected, setWorkerSelected] = useState('');
+  const handleWorkerSelected = (class12) => {
+    setWorkerSelected(class12);
   }
   return (
     <div className='DataEntry'>
       <div className='date'>Date: {userDetails['date']}</div>
       <div className='workers'>
-        <div className='class1' onClick={() => handleClassClick(0)}>
-          {workers ? workerSelected['class1'] ? workerSelected['class1'] : workers[0]['class'] : ''}
-          <div className='listWorker'
-            style={classClick['class1'] ? { 'display': 'block' } : { 'display': 'none' }}>
+        <div className='selectClass' onClick={() => handleClass12()}>
+          {selectedclass ? selectedclass : <span style={{ 'fontSize': '16px', 'padding': '0px 6px 0px 6px' }}>Select your class</span>}
+          <div
+            className='class12'
+            style={class12 ? { 'display': 'block' } : { 'display': 'none' }}
+          >
             {
-              workers[0]['worker'].map((elem, i) =>
-                <div
-                  className='workerId'
-                  key={i.toString()}
-                  onClick={() => handleWorkerSelected(0, elem['id'])}
-                >{elem['id']}</div>
+              [workers[0]['class'], workers[1]['class']].map(
+                (elem, i) =>
+                  <div
+                    className='class'
+                    key={i.toString()}
+                    onClick={() => handleSelClass(elem)}
+                  >{elem}</div>
               )
             }
           </div>
         </div>
-
-        <div className='class2' onClick={() => handleClassClick(1)}>
-          {workers ? workerSelected['class2'] ? workerSelected['class2'] : workers[1]['class'] : ''}
-          <div className='listWorker' style={classClick['class2'] ? { 'display': 'block' } : { 'display': 'none' }}>
+        <div className='class1' onClick={() => handleClassClick(0)}>
+          {workerSelected ? workerSelected : <span style={{ 'fontSize': '16px', 'padding': '0px 6px 0px 6px' }}>WorkerID</span>}
+          <div className='listWorker'
+            style={classClick['class1'] ? { 'display': 'block' } : { 'display': 'none' }}>
             {
-              workers[1]['worker'].map((elem, i) =>
+              workers[selectedclass === workers[0]['class'] ? 0 : 1]['worker'].map((elem, i) =>
                 <div
                   className='workerId'
                   key={i.toString()}
-                  onClick={() => handleWorkerSelected(1, elem['id'])}
+                  onClick={() => handleWorkerSelected(elem['id'])}
                 >{elem['id']}</div>
               )
             }
           </div>
+
         </div>
       </div>
       <label><span>LAB ID:</span>
@@ -178,6 +219,8 @@ const DataEntry = ({ userDetails }) => {
       <label><span>Time Completed:</span>
         <input
           type='time'
+          value={time}
+          onChange={handleTime}
         >
         </input>
       </label>
@@ -204,6 +247,109 @@ const DataEntry = ({ userDetails }) => {
         }
       </div>
       <div className='wage'>{wage.toUpperCase()}</div>
+      <div className='addBtn' onClick={handleFinalData}>ADD</div>
+    </div >
+  )
+}
+const classesfinder = (data) => {
+  const classes = {
+    class1: '',
+    class2: ''
+  }
+
+  data.forEach((elem) => {
+    if (classes['class1'] === '') classes['class1'] = elem['supervisorId'];
+    if (classes['class1'] !== '') {
+      if (classes['class2'] === '' && elem['supervisorId'] !== classes['class1']) {
+        classes['class2'] = elem['supervisorId'];
+      }
+    }
+  })
+  return classes;
+}
+const RowName = ({ row }) => {
+  return (
+    <div className='row'>
+      {
+        row.map(
+          (elem, i) => <div key={i.toString()} className='r main'>{elem}</div>)
+      }
+
+    </div>
+  )
+}
+const Data = ({
+  dataExport, userDetails, csvTransfer,
+  handleSubmition, handleIndexDeletion, indexDeletion,
+  handleDelete }) => {
+  const [classes, setClasses] = useState(classesfinder(dataExport));
+  const [row, setRow] = useState([
+    'Date', 'Lab Id', 'Section Verified', 'Time Completed', 'Wage', 'Worker Id', 'index'
+  ])
+
+  return (
+    <div className='Data'>
+      <div className='class1'>
+        <span>{classes['class1']}</span>
+        <div className='datadisplay'>
+          <RowName row={row} />
+          {
+            dataExport.map((elem, i) => {
+              if (elem['supervisorId'] === classes['class1'])
+                return <div className='row' key={i.toString()}>
+                  <div className='r'>{elem['date']}</div>
+                  <div className='r'>{elem['labId']}</div>
+                  <div className='r'>{elem['sectionVerified']}</div>
+                  <div className='r'>{elem['timeCompleted']}</div>
+                  <div className='r'>{elem['wage']}</div>
+                  <div className='r'>{elem['workerId']}</div>
+                  <div className='r'>{i}</div>
+                </div>
+              return ''
+            })
+          }
+        </div>
+
+      </div>
+      <div className='class2'>
+        <span>{classes['class2']}</span>
+        <div className='datadisplay'>
+          <RowName row={row} />
+          {
+            dataExport.map((elem, i) => {
+              if (elem['supervisorId'] === classes['class2'])
+                return <div className='row' key={i.toString()}>
+                  <div className='r'>{elem['date']}</div>
+                  <div className='r'>{elem['labId']}</div>
+                  <div className='r'>{elem['sectionVerified']}</div>
+                  <div className='r'>{elem['timeCompleted']}</div>
+                  <div className='r'>{elem['wage']}</div>
+                  <div className='r'>{elem['workerId']}</div>
+                  <div className='r'>{i}</div>
+                </div>
+              return ''
+            })
+          }
+        </div>
+      </div>
+      <div className='bottomSelection'>
+        <a
+          className='sendData'
+          onClick={() => handleSubmition(userDetails['name'], csvTransfer)}
+
+        >Send Data ({dataExport.length})
+        </a>
+        <input
+          placeholder='Index number'
+          type='number'
+          value={indexDeletion}
+          onChange={handleIndexDeletion}
+        >
+        </input>
+        <div className='deletion' onClick={() => handleDelete()}>Delete</div>
+      </div>
+
+
     </div>
   )
 }
@@ -219,6 +365,53 @@ function App() {
   const handleUserDetails = (date) => {
     setUserDetails({ date: date, name: manager });
   }
+  const [dataExport, setDataExport] = useState([]);
+  const handleDataExport = (finalData) => {
+    const newArr = [...dataExport];
+    newArr.push(finalData);
+    setDataExport(newArr);
+  }
+  const [indexDeletion, setIndex] = useState('')
+  const handleIndexDeletion = (e) => {
+    if (e !== '') setIndex(parseInt(e.target.value))
+    setIndex(e.target.value);
+  }
+  const handleDelete = () => {
+    if (indexDeletion) {
+      const newArr = [...dataExport];
+      newArr.splice(indexDeletion, 1);
+      setDataExport(newArr);
+    }
+  }
+  const [dataClick, setDataClick] = useState(false);
+  const handleDataClick = () => {
+    setDataClick(!dataClick);
+  }
+  const [csvTransfer, setCsvTransfer] = useState('');
+  const handleSubmition = (managerName, csv) => {
+    console.log('clicked');
+    const name = managerName;
+    const csvFinal = csv;
+    setCsvTransfer('');
+    setDataExport([]);
+    const mailtoLink = `mailto:alex.boulganine12@gmail.com?subject=${name} &body=${encodeURIComponent(csvFinal)}`;
+    window.location.href = mailtoLink;
+    localStorage.removeItem('cpds');
+  }
+
+  useEffect(() => {
+
+    let csvFomat = 'SupervisorID,WorkerID,LabID,Date,TimeCompleted,SectionVerified,FormPay\n';
+    dataExport.forEach(elem => {
+      let csvstring = elem['supervisorId'] + ',' + elem['workerId'] +
+        ',' + elem['labId'] + ',' + elem['date'] +
+        ',' + elem['timeCompleted'] + ',' + elem['sectionVerified'] +
+        ',' + elem['wage'] + '\n';
+      csvFomat += csvstring;
+    });
+    localStorage.setItem('cpds', csvFomat);
+    setCsvTransfer(csvFomat);
+  }, [dataExport])
   return (
     <div className="home">
       <div className='header'>
@@ -227,12 +420,6 @@ function App() {
         {
           userDetails['name'] ?
             <div className='user'>
-              <span
-                className='userName'
-              >{
-                  userDetails['name'] ?
-                    userDetails['name'].toUpperCase()
-                    : ''}</span>
               <div
                 className='exit'
                 onClick={() => {
@@ -241,13 +428,35 @@ function App() {
                     date: ''
                   }); handleManager('')
                 }}
-              ><span>Exit</span>
+              >
+                <span>Exit</span>
               </div>
+              <span
+                className='userName'
+              >
+                {
+                  userDetails['name'] ?
+                    userDetails['name'].toUpperCase()
+                    : ''
+                }
+              </span>
+
+              <div
+                className='checkList'
+                onClick={() => handleDataClick()}
+              >{dataClick ? `Back (${(dataExport.length).toString()})` : `Data (${(dataExport.length).toString()})`}</div>
             </div> : <></>
         }
       </div>
       {
-        userDetails['name'] ? <DataEntry userDetails={userDetails} />
+        userDetails['name'] ?
+          dataClick ?
+            <Data
+              dataExport={dataExport} userDetails={userDetails}
+              csvTransfer={csvTransfer} handleSubmition={handleSubmition}
+              handleIndexDeletion={handleIndexDeletion} indexDeletion={indexDeletion}
+              handleDelete={handleDelete}
+            /> : <DataEntry userDetails={userDetails} handleDataExport={handleDataExport} />
           : <ManagerSelected manager={manager}
             handleManager={handleManager}
             handleUserDetails={handleUserDetails} />
