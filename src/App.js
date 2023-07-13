@@ -379,9 +379,14 @@ function App() {
   }
   const handleDelete = () => {
     if (indexDeletion) {
+
       const newArr = [...dataExport];
-      newArr.splice(indexDeletion, 1);
-      setDataExport(newArr);
+      newArr.splice(parseInt(indexDeletion), 1);
+      if (newArr.length === 0) {
+        localStorage.removeItem('cpds');
+        setDataExport([]);
+      }
+      else setDataExport([...newArr]);
     }
   }
   const [dataClick, setDataClick] = useState(false);
@@ -437,7 +442,7 @@ function App() {
       setDataExport(finalArr);
     }
 
-  }, [userDetails,dataExport])
+  }, [userDetails, dataExport])
 
 
   useEffect(() => {
