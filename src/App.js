@@ -390,7 +390,6 @@ function App() {
   }
   const [csvTransfer, setCsvTransfer] = useState('');
   const handleSubmition = (managerName, csv) => {
-    console.log('clicked');
     const name = managerName;
     const csvFinal = csv;
     setCsvTransfer('');
@@ -399,6 +398,47 @@ function App() {
     window.location.href = mailtoLink;
     localStorage.removeItem('cpds');
   }
+
+  useEffect(() => {
+    if (localStorage.getItem('cpds') && dataExport.length === 0 && userDetails['name'] !== '') {
+      const previousData = localStorage.getItem('cpds');
+      const newString = previousData.replace(/\n/g, ",");
+      const arr = newString.split(',');
+      arr.pop();
+      const arr2 = [...arr.slice(7, arr.length)];
+
+      let finalArr = [];
+      let j = 0;
+      let row = [];
+
+      arr2.forEach((elem, i) => {
+
+        if (j <= 7) {
+          row.push(elem);
+
+          j += 1;
+        }
+        if ((i + 1) % 7 === 0) {
+          const newElem = {
+            date: row[3],
+            labId: parseInt(row[2]),
+            workerId: row[1],
+            supervisorId: row[0],
+            timeCompleted: row[4],
+            sectionVerified: row[5],
+            wage: parseInt(row[6]),
+          };
+
+          finalArr.push(newElem);
+          row = [];
+          j = 0;
+        }
+      });
+      setDataExport(finalArr);
+    }
+
+  }, [userDetails,dataExport])
+
 
   useEffect(() => {
 
@@ -410,8 +450,11 @@ function App() {
         ',' + elem['wage'] + '\n';
       csvFomat += csvstring;
     });
-    localStorage.setItem('cpds', csvFomat);
-    setCsvTransfer(csvFomat);
+    if (dataExport.length > 0) {
+      localStorage.setItem('cpds', csvFomat);
+      setCsvTransfer(csvFomat);
+    }
+
   }, [dataExport])
   return (
     <div className="home">

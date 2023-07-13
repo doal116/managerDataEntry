@@ -229,7 +229,7 @@ export const managerData = [
     {
         name: 'mugabekazi ange ciella',
         workersId: [{
-            class: 'S',
+            class: 'T',
             worker: [
                 { id: 'TA1' },
                 { id: 'TB1' },
@@ -239,7 +239,7 @@ export const managerData = [
                 { id: 'TF2' }
             ]
         }, {
-            class: 'T',
+            class: 'S',
             worker: [
                 { id: 'SA1' },
                 { id: 'SB1' },
