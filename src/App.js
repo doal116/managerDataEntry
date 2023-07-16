@@ -5,6 +5,7 @@ import { managerData } from './manager/mangerData';
 import { labData } from './wageData/wage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckSquare } from '@fortawesome/free-solid-svg-icons';
+import { CSVLink } from 'react-csv';
 
 const ManagerSelected = ({ manager, handleManager, handleUserDetails }) => {
   const [nameClick, setNameClick] = useState(false);
@@ -54,6 +55,88 @@ const workerIds = (managerData, name) => {
     }
   })
   return data;
+}
+const findingWorkers = (data) => {
+  const newArr = [];
+  const newArrWithObj = [];
+  data.forEach((elem, i) => {
+    if (!newArr.includes(elem['workerId'])) {
+      newArr.push(elem['workerId']);
+      newArrWithObj.push({ name: elem['workerId'], sum: 0 });
+    }
+  });
+  return newArrWithObj;
+}
+const payementdisplay = (price) => {
+  const data = price.toString();
+  let newData = [];
+  let j = 0;
+
+  for (let i = data.length - 1; i >= 0; i--) {
+    j++;
+    newData.unshift(data[i]);
+    if (j === 3 && i !== 0) {
+      newData.unshift(',');
+    }
+  }
+  const res = newData.join('');
+  return res;
+}
+const TotalDisplay = ({ dataExport }) => {
+  const [workerPay, setWorkerPay] = useState(findingWorkers(dataExport));
+  const [csvTotal, setCsvTotal] = useState('');
+  useEffect(() => {
+    const data = [...findingWorkers(dataExport)];
+    dataExport.forEach((elem, i) => {
+      data.forEach((worker, i) => {
+        if (elem['workerId'] === worker['name']) {
+          worker['sum'] = worker['sum'] + elem['wage'];
+        }
+      })
+    })
+    setWorkerPay(data);
+
+  }, [dataExport]);
+  const handleExport = (data) => {
+    let csvFormat = 'workerId,totalPay\n';
+    data.forEach((elem, i) => {
+      const line = elem['name'] + ',' + elem['sum'] + '\n';
+      csvFormat += line;
+    });
+    setCsvTotal(csvFormat);
+  }
+  const styling = {
+    bottomL: { 'borderBottomLeftRadius': '10px' },
+    bottomR: { 'borderBottomRightRadius': '10px' },
+    topL: { 'borderTopLeftRadius': '10px' },
+    topR: { 'borderTopRightRadius': '10px' }
+  };
+  return (
+    <div className='TotalDisplay'>
+      <div className='title'>
+        <div style={styling['topL']}>WokerId</div>
+        <div style={styling['topR']}>Total Pay</div>
+      </div>
+      {
+        workerPay.map((elem, i) =>
+          <div key={i.toString()} className='worker'
+
+          >
+            <div
+              className='workerIds'>{elem['name']}</div>
+            <div
+              className='totalpay'>{payementdisplay(elem['sum'])} BIF</div>
+          </div>
+        )
+      }
+      <CSVLink
+        className='exportTotal'
+        onClick={() => handleExport(workerPay)}
+        data={csvTotal}
+        filename={`totalPerWorkerID`}
+      >Export</CSVLink>
+    </div>
+  )
 }
 const DataEntry = ({ userDetails, handleDataExport, finalData, setFinalData }) => {
   const [wage, setWage] = useState('');
@@ -110,8 +193,6 @@ const DataEntry = ({ userDetails, handleDataExport, finalData, setFinalData }) =
     }
   }
 
-
-
   const [sectionVerified, setSectionVerified] = useState([
     { name: 'Biography', status: false },
     { name: 'Antecedant', status: false },
@@ -139,6 +220,9 @@ const DataEntry = ({ userDetails, handleDataExport, finalData, setFinalData }) =
 
   const handleFinalData = () => {
     const sectionVerifi = sectionVerified.filter(elem => elem['status']);
+    if (sectionVerifi.length === 0) {
+      sectionVerifi.push({ name: '', status: false })
+    };
     const data = {
       date: userDetails['date'],
       labId: labId,
@@ -156,7 +240,6 @@ const DataEntry = ({ userDetails, handleDataExport, finalData, setFinalData }) =
     handleSectionVerif('');
     handleSelClass('');
   }
-
   const [class12, setClass12] = useState(false);
   const handleClass12 = () => setClass12(!class12);
 
@@ -247,7 +330,10 @@ const DataEntry = ({ userDetails, handleDataExport, finalData, setFinalData }) =
         }
       </div>
       <div className='wage'>{wage.toUpperCase()}</div>
-      <div className='addBtn' onClick={handleFinalData}>ADD</div>
+      <div
+        className='addBtn'
+
+        onClick={handleFinalData}>ADD</div>
     </div >
   )
 }
@@ -281,7 +367,7 @@ const RowName = ({ row }) => {
 const Data = ({
   dataExport, userDetails, csvTransfer,
   handleSubmition, handleIndexDeletion, indexDeletion,
-  handleDelete }) => {
+  handleDelete, handleDataReset }) => {
   const classes = classesfinder(dataExport);
   const row = [
     'Date', 'Lab Id', 'Section Verified', 'Time Completed', 'Wage', 'Worker Id', 'index'
@@ -289,6 +375,7 @@ const Data = ({
 
   return (
     <div className='Data'>
+
       <div className='class1'>
         <span>{classes['class1']}</span>
         <div className='datadisplay'>
@@ -333,12 +420,17 @@ const Data = ({
         </div>
       </div>
       <div className='bottomSelection'>
-        <div
+        <CSVLink
+          data={csvTransfer}
+          filename={`${userDetails['name']}_managerData.csv`}
           className='sendData'
-          onClick={() => handleSubmition(userDetails['name'], csvTransfer)}
+          onClick={() => {
+            handleSubmition(userDetails['name'], csvTransfer);
+          }}
+        >
+          Send Data ({dataExport.length})
+        </CSVLink>
 
-        >Send Data ({dataExport.length})
-        </div>
         <input
           placeholder='Index number'
           type='number'
@@ -348,8 +440,11 @@ const Data = ({
         </input>
         <div className='deletion' onClick={() => handleDelete()}>Delete</div>
       </div>
-
-
+      <div className='DataReset'
+        onClick={() => handleDataReset()}
+      >
+        Data Reset
+      </div>
     </div>
   )
 }
@@ -377,6 +472,7 @@ function App() {
     if (e !== '') setIndex(parseInt(e.target.value))
     setIndex(e.target.value);
   }
+
   const handleDelete = () => {
     if (indexDeletion) {
 
@@ -389,6 +485,11 @@ function App() {
       else setDataExport([...newArr]);
     }
   }
+  const handleDataReset = () => {
+    setDataExport([]);
+    setCsvTransfer('');
+    localStorage.removeItem('cpds');
+  }
   const [dataClick, setDataClick] = useState(false);
   const handleDataClick = () => {
     setDataClick(!dataClick);
@@ -397,11 +498,8 @@ function App() {
   const handleSubmition = (managerName, csv) => {
     const name = managerName;
     const csvFinal = csv;
-    setCsvTransfer('');
-    setDataExport([]);
     const mailtoLink = `mailto:alex.boulganine12@gmail.com?subject=${name} &body=${encodeURIComponent(csvFinal)}`;
     window.location.href = mailtoLink;
-    localStorage.removeItem('cpds');
   }
 
   useEffect(() => {
@@ -501,11 +599,15 @@ function App() {
         userDetails['name'] ?
           dataClick ?
             <Data
+              handleDataReset={handleDataReset}
               dataExport={dataExport} userDetails={userDetails}
               csvTransfer={csvTransfer} handleSubmition={handleSubmition}
               handleIndexDeletion={handleIndexDeletion} indexDeletion={indexDeletion}
               handleDelete={handleDelete}
-            /> : <DataEntry userDetails={userDetails} handleDataExport={handleDataExport} finalData={finalData} setFinalData={setFinalData} />
+            /> : <>
+              <DataEntry userDetails={userDetails} handleDataExport={handleDataExport} finalData={finalData} setFinalData={setFinalData} />
+              <TotalDisplay dataExport={dataExport} />
+            </>
           : <ManagerSelected manager={manager}
             handleManager={handleManager}
             handleUserDetails={handleUserDetails} />

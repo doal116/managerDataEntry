@@ -38,6 +38,7 @@
   grid-template-columns: auto;
   align-items: center;
   box-shadow: 1px 1px 10px rgba(33, 33, 33, 0.8);
+  cursor: pointer;
 }
 .home .header .user .userName {
   font-style: italic;
@@ -322,6 +323,15 @@
 .home .Data .class1 {
   margin: 50px 0px 0px 0px;
 }
+.home .Data .DataReset {
+  background-color: red;
+  padding: 10px;
+  color: white;
+  font-family: "Inter";
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px rgba(33, 33, 33, 0.5);
+  cursor: pointer;
+}
 .home .Data .bottomSelection {
   display: flex;
   -moz-column-gap: 10px;
@@ -329,13 +339,14 @@
   align-items: center;
 }
 .home .Data .bottomSelection .sendData {
+  text-decoration: none;
   background-color: rgba(3, 137, 32, 0.8666666667);
   padding: 10px;
   color: white;
   font-family: "Inter";
   border-radius: 10px;
   box-shadow: 1px 1px 10px rgba(33, 33, 33, 0.5);
-  text-decoration: none;
+  cursor: pointer;
 }
 .home .Data .bottomSelection input {
   border-radius: 10px;
@@ -351,4 +362,32 @@
   font-family: "Inter";
   border-radius: 10px;
   box-shadow: 1px 1px 10px rgba(33, 33, 33, 0.5);
+  cursor: pointer;
+}
+.home .TotalDisplay {
+  justify-self: center;
+  margin-top: 50px;
+  box-shadow: 1px 1px 10px rgba(33, 33, 33, 0.5);
+  border-radius: 10px;
+  font-family: "Exo";
+}
+.home .TotalDisplay .worker, .home .TotalDisplay .title {
+  display: flex;
+}
+.home .TotalDisplay .worker div, .home .TotalDisplay .title div {
+  width: 100px;
+  padding: 10px;
+  border: 1px solid grey;
+  text-align: center;
+}
+.home .TotalDisplay .exportTotal {
+  padding: 10px;
+  background-color: rgba(3, 137, 32, 0.8666666667);
+  margin: 0px auto 0px auto;
+  color: white;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }/*# sourceMappingURL=home.css.map */

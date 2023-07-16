@@ -27,7 +27,7 @@ export const managerData = [
         ]
     },
     {
-        name: 'delfphin mugisha',
+        name: 'delphin mugisha',
         workersId: [{
             class: 'C',
             worker: [

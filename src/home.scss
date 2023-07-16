@@ -44,6 +44,7 @@
                 grid-template-columns: auto;
                 align-items: center;
                 box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.8);
+                cursor: pointer;
             }
 
             .exit {
@@ -391,19 +392,30 @@
 
         }
 
+        .DataReset {
+            background-color: red;
+            padding: 10px;
+            color: white;
+            font-family: 'Inter';
+            border-radius: 10px;
+            box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.5);
+            cursor: pointer;
+        }
+
         .bottomSelection {
             display: flex;
             column-gap: 10px;
             align-items: center;
 
             .sendData {
+                text-decoration: none;
                 background-color: #038920dd;
                 padding: 10px;
                 color: white;
                 font-family: 'Inter';
                 border-radius: 10px;
                 box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.5);
-                text-decoration: none;
+                cursor: pointer;
             }
 
             input {
@@ -421,7 +433,7 @@
                 font-family: 'Inter';
                 border-radius: 10px;
                 box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.5);
-
+                cursor: pointer;
             }
         }
 
@@ -430,5 +442,42 @@
             @extend %commonDesignClass12;
         }
 
+    }
+
+    .TotalDisplay {
+        justify-self: center;
+        margin-top: 50px;
+        box-shadow: 1px 1px 10px rgb(33, 33, 33, 0.5);
+        border-radius: 10px;
+        font-family: 'Exo';
+        %commonDesignTable {
+            display: flex;
+
+            div {
+                width: 100px;
+                padding: 10px;
+                border: 1px solid grey;
+                text-align: center
+            }
+        }
+        .exportTotal{
+            padding: 10px;
+            background-color: #038920dd;
+            margin: 0px auto 0px auto;
+            color: white;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .title {
+
+            @extend %commonDesignTable;
+        }
+
+        .worker {
+            @extend %commonDesignTable
+        }
     }
 }
