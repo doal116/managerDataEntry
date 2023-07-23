@@ -62,7 +62,7 @@ export const addButtonColorChange = (
     const stringSection = date !== '' && workerSelected !== '' && selectedclass !== '' && time !== '';
     const arraySection = sectionVerified.filter(elem => elem['status']).length > 0;
     const labSection = typeof labId === 'number';
-
-    if (stringSection && arraySection && labSection) return true;
+    const labRange = labId >= 101 && labId <= 196;
+    if (stringSection && arraySection && labSection && labRange) return true;
     else return false;
 }

@@ -175,6 +175,8 @@ const DataEntry = ({ userDetails, handleDataExport, finalData, setFinalData }) =
                     type='number'
                     value={labId}
                     onChange={handleLabId}
+                    min={101}
+                    max={196}
                 >
                 </input>
             </label>
@@ -225,7 +227,7 @@ const DataEntry = ({ userDetails, handleDataExport, finalData, setFinalData }) =
                         time, sectionVerified
                     );
 
-                    if (buttonState) handleFinalData();
+                    if (buttonState ) handleFinalData();
 
                 }}>ADD</div>
         </div >

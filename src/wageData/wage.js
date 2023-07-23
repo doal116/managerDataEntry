@@ -1,98 +1,97 @@
 export const labData = [
-    { type: 'low wage', number: 1 },
-    { type: 'low wage', number: 2 },
-    { type: 'low wage', number: 3 },
-    { type: 'low wage', number: 4 },
-    { type: 'High wage', number: 5 },
-    { type: 'low wage', number: 6 },
-    { type: 'low wage', number: 7 },
-    { type: 'low wage', number: 8 },
-    { type: 'low wage', number: 9 },
-    { type: 'High wage', number: 10 },
-    { type: 'low wage', number: 11 },
-    { type: 'High wage', number: 12 },
-    { type: 'High wage', number: 13 },
-    { type: 'low wage', number: 14 },
-    { type: 'low wage', number: 15 },
-    { type: 'low wage', number: 16 },
-    { type: 'High wage', number: 17 },
-    { type: 'low wage', number: 18 },
-    { type: 'High wage', number: 19 },
-    { type: 'low wage', number: 20 },
-    { type: 'High wage', number: 21 },
-    { type: 'High wage', number: 22 },
-    { type: 'High wage', number: 23 },
-    { type: 'low wage', number: 24 },
-    { type: 'low wage', number: 25 },
-    { type: 'low wage', number: 26 },
-    { type: 'low wage', number: 27 },
-    { type: 'High wage', number: 28 },
-    { type: 'low wage', number: 29 },
-    { type: 'High wage', number: 30 },
-    { type: 'High wage', number: 31 },
-    { type: 'High wage', number: 32 },
-    { type: 'low wage', number: 33 },
-    { type: 'low wage', number: 34 },
-    { type: 'High wage', number: 35 },
-    { type: 'low wage', number: 36 },
-    { type: 'High wage', number: 37 },
-    { type: 'low wage', number: 38 },
-    { type: 'High wage', number: 39 },
-    { type: 'High wage', number: 40 },
-    { type: 'High wage', number: 41 },
-    { type: 'low wage', number: 42 },
-    { type: 'low wage', number: 43 },
-    { type: 'High wage', number: 44 },
-    { type: 'low wage', number: 45 },
-    { type: 'low wage', number: 46 },
-    { type: 'low wage', number: 47 },
-    { type: 'High wage', number: 48 },
-    { type: 'low wage', number: 49 },
-    { type: 'High wage', number: 50 },
-    { type: 'low wage', number: 51 },
-    { type: 'low wage', number: 52 },
-    { type: 'low wage', number: 53 },
-    { type: 'High wage', number: 54 },
-    { type: 'low wage', number: 55 },
-    { type: 'High wage', number: 56 },
-    { type: 'low wage', number: 57 },
-    { type: 'low wage', number: 58 },
-    { type: 'low wage', number: 59 },
-    { type: 'High wage', number: 60 },
-    { type: 'low wage', number: 61 },
-    { type: 'High wage', number: 62 },
-    { type: 'High wage', number: 63 },
-    { type: 'low wage', number: 64 },
-    { type: 'High wage', number: 65 },
-    { type: 'High wage', number: 66 },
-    { type: 'High wage', number: 67 },
-    { type: 'High wage', number: 68 },
-    { type: 'High wage', number: 69 },
-    { type: 'low wage', number: 70 },
-    { type: 'low wage', number: 71 },
-    { type: 'low wage', number: 72 },
-    { type: 'High wage', number: 73 },
-    { type: 'High wage', number: 74 },
-    { type: 'low wage', number: 75 },
-    { type: 'High wage', number: 76 },
-    { type: 'low wage', number: 77 },
-    { type: 'High wage', number: 78 },
-    { type: 'low wage', number: 79 },
-    { type: 'High wage', number: 80 },
-    { type: 'low wage', number: 81 },
-    { type: 'low wage', number: 82 },
-    { type: 'low wage', number: 83 },
-    { type: 'High wage', number: 84 },
-    { type: 'High wage', number: 85 },
-    { type: 'low wage', number: 86 },
-    { type: 'low wage', number: 87 },
-    { type: 'low wage', number: 88 },
-    { type: 'High wage', number: 89 },
-    { type: 'High wage', number: 90 },
-    { type: 'High wage', number: 91 },
-    { type: 'High wage', number: 92 },
-    { type: 'low wage', number: 93 },
-    { type: 'High wage', number: 94 },
-    { type: 'low wage', number: 95 },
-    { type: 'High wage', number: 96 },
+    { type: 'low wage', number: 101 }
+    , { type: 'low wage', number: 102 }
+    , { type: 'low wage', number: 103 }
+    , { type: 'low wage', number: 104 }
+    , { type: 'High wage', number: 105 }
+    , { type: 'low wage', number: 106 }
+    , { type: 'low wage', number: 107 }
+    , { type: 'low wage', number: 108 }
+    , { type: 'low wage', number: 109 }
+    , { type: 'low wage', number: 110 }
+    , { type: 'low wage', number: 111 }
+    , { type: 'High wage', number: 112 }
+    , { type: 'High wage', number: 113 }
+    , { type: 'low wage', number: 114 }
+    , { type: 'High wage', number: 115 }
+    , { type: 'low wage', number: 116 }
+    , { type: 'High wage', number: 117 }
+    , { type: 'low wage', number: 118 }
+    , { type: 'low wage', number: 119 }
+    , { type: 'low wage', number: 120 }
+    , { type: 'High wage', number: 121 }
+    , { type: 'High wage', number: 122 }
+    , { type: 'low wage', number: 123 }
+    , { type: 'low wage', number: 124 }
+    , { type: 'High wage', number: 125 }
+    , { type: 'low wage', number: 126 }
+    , { type: 'low wage', number: 127 }
+    , { type: 'High wage', number: 128 }
+    , { type: 'High wage', number: 129 }
+    , { type: 'High wage', number: 130 }
+    , { type: 'low wage', number: 131 }
+    , { type: 'low wage', number: 132 }
+    , { type: 'low wage', number: 133 }
+    , { type: 'low wage', number: 134 }
+    , { type: 'High wage', number: 135 }
+    , { type: 'low wage', number: 136 }
+    , { type: 'low wage', number: 137 }
+    , { type: 'low wage', number: 138 }
+    , { type: 'low wage', number: 139 }
+    , { type: 'low wage', number: 140 }
+    , { type: 'low wage', number: 141 }
+    , { type: 'High wage', number: 142 }
+    , { type: 'High wage', number: 143 }
+    , { type: 'High wage', number: 144 }
+    , { type: 'High wage', number: 145 }
+    , { type: 'low wage', number: 146 }
+    , { type: 'low wage', number: 147 }
+    , { type: 'High wage', number: 148 }
+    , { type: 'High wage', number: 149 }
+    , { type: 'low wage', number: 150 }
+    , { type: 'low wage', number: 151 }
+    , { type: 'low wage', number: 152 }
+    , { type: 'low wage', number: 153 }
+    , { type: 'low wage', number: 154 }
+    , { type: 'low wage', number: 155 }
+    , { type: 'low wage', number: 156 }
+    , { type: 'High wage', number: 157 }
+    , { type: 'low wage', number: 158 }
+    , { type: 'low wage', number: 159 }
+    , { type: 'low wage', number: 160 }
+    , { type: 'low wage', number: 161 }
+    , { type: 'High wage', number: 162 }
+    , { type: 'High wage', number: 163 }
+    , { type: 'High wage', number: 164 }
+    , { type: 'low wage', number: 165 }
+    , { type: 'low wage', number: 167 }
+    , { type: 'low wage', number: 168 }
+    , { type: 'High wage', number: 169 }
+    , { type: 'low wage', number: 170 }
+    , { type: 'High wage', number: 171 }
+    , { type: 'low wage', number: 172 }
+    , { type: 'High wage', number: 173 }
+    , { type: 'low wage', number: 174 }
+    , { type: 'low wage', number: 175 }
+    , { type: 'low wage', number: 176 }
+    , { type: 'low wage', number: 177 }
+    , { type: 'High wage', number: 178 }
+    , { type: 'High wage', number: 179 }
+    , { type: 'High wage', number: 180 }
+    , { type: 'High wage', number: 181 }
+    , { type: 'low wage', number: 182 }
+    , { type: 'High wage', number: 183 }
+    , { type: 'High wage', number: 184 }
+    , { type: 'low wage', number: 185 }
+    , { type: 'low wage', number: 186 }
+    , { type: 'low wage', number: 187 }
+    , { type: 'low wage', number: 188 }
+    , { type: 'low wage', number: 189 }
+    , { type: 'High wage', number: 190 }
+    , { type: 'low wage', number: 191 }
+    , { type: 'low wage', number: 192 }
+    , { type: 'low wage', number: 193 }
+    , { type: 'low wage', number: 194 }
+    , { type: 'low wage', number: 195 }
+    , { type: 'low wage', number: 196 }
 ];
